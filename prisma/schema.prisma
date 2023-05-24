@@ -14,7 +14,7 @@ model Client {
     id          Int      @id @default(autoincrement())
     fullName    String   @db.VarChar(127)
     email       String   @unique @db.VarChar(127)
-    phoneNumber String   @unique
+    phoneNumber String   @unique @db.VarChar(11)
     createdAt   DateTime @default(now())
 
     contacts Contact[]
@@ -26,7 +26,7 @@ model Contact {
     id          Int      @id @default(autoincrement())
     fullName    String   @db.VarChar(127)
     email       String   @db.VarChar(127)
-    phoneNumber String
+    phoneNumber String   @db.VarChar(11)
     addedAt     DateTime @default(now())
 
     client   Client @relation(fields: [clientId], references: [id])

@@ -39,6 +39,14 @@ module.exports = {
 		'comma-dangle': [
 			'error',
 			'never'
-		]
+		],
+		'comma-spacing': [
+			'error',
+			{
+				'before': false,
+				'after': true
+			}
+		],
+		'no-multi-spaces': 'error'
 	}
 }
