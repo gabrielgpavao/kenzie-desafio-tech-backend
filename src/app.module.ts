@@ -3,8 +3,6 @@ import { ClientsModule } from './modules/clients/clients.module'
 import { ContactsModule } from './modules/contacts/contacts.module'
 
 @Module({
-	imports: [ClientsModule, ContactsModule],
-	controllers: [],
-	providers: []
+	imports: [ClientsModule, ContactsModule]
 })
 export class AppModule {}
