@@ -9,26 +9,29 @@ export class ContactsController {
 
 	@Post()
 	create(@Body() createContactDto: CreateContactDto) {
-		return this.contactsService.create(createContactDto)
+		// Trocar o parâmetro estático de clientId para o id por meio do Token
+		return this.contactsService.create(createContactDto, 1)
 	}
 
 	@Get()
 	findAll() {
-		return this.contactsService.findAll()
+		// Trocar o parâmetro estático de clientId para o id por meio do Token
+		return this.contactsService.list(1)
 	}
 
 	@Get(':id')
-	findOne(@Param('id') id: string) {
-		return this.contactsService.findOne(+id)
+	findOne(@Param('id') id: number) {
+		// Trocar o parâmetro estático de clientId para o id por meio do Token
+		return this.contactsService.retrieve(id, 1)
 	}
 
 	@Patch(':id')
-	update(@Param('id') id: string, @Body() updateContactDto: UpdateContactDto) {
-		return this.contactsService.update(+id, updateContactDto)
+	update(@Param('id') id: number, @Body() updateContactDto: UpdateContactDto) {
+		return this.contactsService.update(id, updateContactDto)
 	}
 
 	@Delete(':id')
-	remove(@Param('id') id: string) {
-		return this.contactsService.remove(+id)
+	remove(@Param('id') id: number) {
+		return this.contactsService.delete(id)
 	}
 }
