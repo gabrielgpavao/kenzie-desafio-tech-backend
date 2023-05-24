@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common'
 import { CreateClientDto } from './dto/create-client.dto'
 import { UpdateClientDto } from './dto/update-client.dto'
+import { ClientRepository } from './repositories/client.repository'
 
 @Injectable()
 export class ClientsService {
-	create(createClientDto: CreateClientDto) {
-		return 'This action adds a new client'
+	constructor(private clientRepository: ClientRepository) {}
+
+	async create(clientData: CreateClientDto) {
+		return await this.clientRepository.create(clientData)
 	}
 
-	findAll() {
-		return 'This action returns all clients'
+	async list() {
+		return await this.clientRepository.list()
 	}
 
-	findOne(id: number) {
-		return `This action returns a #${id} client`
+	async retrieve(id: number) {
+		return await this.clientRepository.retrieve(id)
 	}
 
-	update(id: number, updateClientDto: UpdateClientDto) {
-		return `This action updates a #${id} client`
+	async update(id: number, clientData: UpdateClientDto) {
+		return await this.clientRepository.update(id, clientData)
 	}
 
-	remove(id: number) {
-		return `This action removes a #${id} client`
+	async delete(id: number) {
+		return await this.clientRepository.delete(id)
 	}
 }

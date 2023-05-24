@@ -13,22 +13,22 @@ export class ClientsController {
 	}
 
 	@Get()
-	findAll() {
-		return this.clientsService.findAll()
+	list() {
+		return this.clientsService.list()
 	}
 
 	@Get(':id')
-	findOne(@Param('id') id: string) {
-		return this.clientsService.findOne(+id)
+	retrieve(@Param('id') id: number) {
+		return this.clientsService.retrieve(id)
 	}
 
 	@Patch(':id')
-	update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-		return this.clientsService.update(+id, updateClientDto)
+	update(@Param('id') id: number, @Body() updateClientDto: UpdateClientDto) {
+		return this.clientsService.update(id, updateClientDto)
 	}
 
 	@Delete(':id')
-	remove(@Param('id') id: string) {
-		return this.clientsService.remove(+id)
+	delete(@Param('id') id: number) {
+		return this.clientsService.delete(id)
 	}
 }
