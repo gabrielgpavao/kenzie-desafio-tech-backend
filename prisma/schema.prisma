@@ -19,3 +19,12 @@ model Client {
 
     @@map("clients")
 }
+
+model Contact {
+    id          Int    @id @default(autoincrement())
+    fullName    String @db.VarChar(127)
+    email       String @db.VarChar(127)
+    phoneNumber String
+
+    @@map("contacts")
+}
