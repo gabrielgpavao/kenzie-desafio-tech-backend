@@ -17,14 +17,20 @@ model Client {
     phoneNumber String   @unique
     createdAt   DateTime @default(now())
 
+    contacts Contact[]
+
     @@map("clients")
 }
 
 model Contact {
-    id          Int    @id @default(autoincrement())
-    fullName    String @db.VarChar(127)
-    email       String @db.VarChar(127)
+    id          Int      @id @default(autoincrement())
+    fullName    String   @db.VarChar(127)
+    email       String   @db.VarChar(127)
     phoneNumber String
+    addedAt     DateTime @default(now())
+
+    client   Client @relation(fields: [clientId], references: [id])
+    clientId Int
 
     @@map("contacts")
 }
