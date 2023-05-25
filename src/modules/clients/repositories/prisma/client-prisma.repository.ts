@@ -4,7 +4,9 @@ import { ClientRepository } from '../client.repository'
 import { PrismaService } from 'src/server/prisma.service'
 import { Client } from '../../entities/client.entity'
 import { plainToInstance } from 'class-transformer'
+import { Injectable } from '@nestjs/common'
 
+@Injectable()
 export class ClientPrismaRepository implements ClientRepository {
 	constructor(private prisma: PrismaService) {}
 

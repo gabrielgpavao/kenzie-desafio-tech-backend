@@ -4,7 +4,9 @@ import { ContactRepository } from '../contact.repository'
 import { PrismaService } from 'src/server/prisma.service'
 import { Contact } from '../../entities/contact.entity'
 import { plainToInstance } from 'class-transformer'
+import { Injectable } from '@nestjs/common'
 
+@Injectable()
 export class ContactPrismaRepository implements ContactRepository {
 	constructor(private prisma: PrismaService) {}
 

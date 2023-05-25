@@ -1,27 +1,27 @@
-import { IsString, IsEmpty, IsEmail, MaxLength } from 'class-validator'
+import { IsString, IsEmail, MaxLength, IsNotEmpty } from 'class-validator'
 import { Transform } from 'class-transformer'
 import { hashSync } from 'bcryptjs'
 
 export class CreateClientDto {
 	@IsString()
-	@IsEmpty()
+	@IsNotEmpty()
 	@MaxLength(127)
 		fullName: string
 
 	@IsEmail()
-	@IsEmpty()
+	@IsNotEmpty()
 	@MaxLength(127)
 		email: string
 
 	@IsString()
-	@IsEmpty()
+	@IsNotEmpty()
 	@Transform(({ value }: { value: string }) => hashSync(value, 10), {
 		groups: ['transform']
 	})
 		password: string
 
 	@IsString()
-	@IsEmpty()
+	@IsNotEmpty()
 	@MaxLength(11)
 		phoneNumber: string
 }
