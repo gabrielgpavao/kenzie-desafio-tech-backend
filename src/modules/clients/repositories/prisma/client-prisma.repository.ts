@@ -31,6 +31,10 @@ export class ClientPrismaRepository implements ClientRepository {
 		return plainToInstance(Client, client)
 	}
 
+	async retrieveBy(params: { id: number } | { email: string } | { phoneNumber: string }): Promise<Client> {
+		return await this.prisma.client.findUniqueOrThrow({	where: params })
+	}
+
 	async update(id: number, data: UpdateClientDto): Promise<Client> {
 		const updatedClient = await this.prisma.client.update({
 			where: { id },

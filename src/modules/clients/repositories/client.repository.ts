@@ -6,6 +6,7 @@ export abstract class ClientRepository {
 	abstract create(data: CreateClientDto): Promise<Client>
 	abstract list(): Promise<Client[]>;
 	abstract retrieve(id: number): Promise<Client>;
+	abstract retrieveBy(params: { id: number } | { email: string } | { phoneNumber: string }): Promise<Client>;
 	abstract update(id: number, data: UpdateClientDto): Promise<Client>;
 	abstract delete(id: number): Promise<void>;
 }

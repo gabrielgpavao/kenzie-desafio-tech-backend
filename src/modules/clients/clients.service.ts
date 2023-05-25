@@ -19,6 +19,10 @@ export class ClientsService {
 		return await this.clientRepository.retrieve(id)
 	}
 
+	async retrieveBy(params: { id: number } | { email: string } | { phoneNumber: string }) {
+		return await this.clientRepository.retrieveBy(params)
+	}
+
 	async update(id: number, clientData: UpdateClientDto) {
 		return await this.clientRepository.update(id, clientData)
 	}
