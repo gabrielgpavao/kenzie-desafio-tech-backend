@@ -14,6 +14,7 @@ model Client {
     id          Int      @id @default(autoincrement())
     fullName    String   @db.VarChar(127)
     email       String   @unique @db.VarChar(127)
+    password    String
     phoneNumber String   @unique @db.VarChar(11)
     createdAt   DateTime @default(now())
 
