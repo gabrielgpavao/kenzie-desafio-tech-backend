@@ -1,4 +1,4 @@
-import { IsString, IsEmail, MaxLength, IsNotEmpty } from 'class-validator'
+import { IsString, IsEmail, MaxLength, IsNotEmpty, Length } from 'class-validator'
 import { Transform } from 'class-transformer'
 import { hashSync } from 'bcryptjs'
 
@@ -22,6 +22,6 @@ export class CreateClientDto {
 
 	@IsString()
 	@IsNotEmpty()
-	@MaxLength(11)
+	@Length(11, 11)
 		phoneNumber: string
 }
