@@ -27,7 +27,8 @@ export class ClientPrismaRepository implements ClientRepository {
 
 	async retrieve(id: number): Promise<Client> {
 		const client = await this.prisma.client.findUniqueOrThrow({
-			where: { id }
+			where: { id },
+			include: { contacts: true }
 		})
 
 		return plainToInstance(Client, client)
