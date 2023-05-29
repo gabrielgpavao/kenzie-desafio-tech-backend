@@ -23,7 +23,7 @@ async function bootstrap() {
 		origin: [
 			'http://localhost:5173',
 			'http://localhost:3000',
-			'https://desafio-kenzie-app.vercel.app/'
+			'https://desafio-kenzie-app.vercel.app'
 		]
 	})
 
