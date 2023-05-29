@@ -22,6 +22,7 @@ cp .env.example .env
 ```
 
 Configure suas variáveis de ambiente com suas credenciais do PostgreSQL e um novo Banco de Dados da sua escolha.
+Além disso, insira uma valor aleatório à variável de chave secreta ("SECRET_KEY") que irá compor o token JWT.
 
 ### 1.3. Migrations
 
