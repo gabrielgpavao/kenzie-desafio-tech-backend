@@ -1,9 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, HttpCode } from '@nestjs/common'
 import { ClientsService } from './clients.service'
 import { CreateClientDto } from './dto/create-client.dto'
 import { UpdateClientDto } from './dto/update-client.dto'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 
+@ApiTags('Clients')
 @Controller('clients')
 export class ClientsController {
 	constructor(private readonly clientsService: ClientsService) {}
@@ -18,6 +20,7 @@ export class ClientsController {
 		return this.clientsService.list()
 	}
 
+	@ApiBearerAuth()
 	@UseGuards(JwtAuthGuard)
 	@Get(':id')
 	retrieve(@Param('id') id: number) {
@@ -29,6 +32,7 @@ export class ClientsController {
 		return this.clientsService.update(id, updateClientDto)
 	}
 
+	@HttpCode(204)
 	@Delete(':id')
 	delete(@Param('id') id: number) {
 		return this.clientsService.delete(id)

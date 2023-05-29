@@ -13,6 +13,7 @@ async function bootstrap() {
 		.addBearerAuth()
 		.addTag('Contacts')
 		.addBearerAuth()
+		.addTag('Login')
 		.build()
 
 	const document = SwaggerModule.createDocument(app, config)
